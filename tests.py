@@ -57,3 +57,16 @@ class TestBooksCollector:
         collector.set_book_rating('Maus: A Survivor’s Tale', 8)
 
         assert collector.get_books_with_specific_rating(9)[0] == 'Motivation and personality' and len(collector.get_books_with_specific_rating(9)) == 1
+
+        # Test that get_book_with_specific_rating returns empty list if non-existing rating value is given
+    def test_get_book_with_specific_rating_get_book_with_non_existing_rating_returns_empty_list(self, collector):
+        collector.add_new_book('The elegant universe')
+        collector.set_book_rating('The elegant universe', 10)
+
+        collector.add_new_book('Motivation and personality')
+        collector.set_book_rating('Motivation and personality', 9)
+
+        collector.add_new_book('Maus: A Survivor’s Tale')
+        collector.set_book_rating('Maus: A Survivor’s Tale', 8)
+
+        assert len(collector.get_books_with_specific_rating(7)) == 0
