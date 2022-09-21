@@ -95,3 +95,10 @@ class TestBooksCollector:
         collector.set_book_rating('Permanent Record', 3)
 
         assert len(collector.get_books_rating()) == 3
+
+    # Test that add_book_in_favorites does not add the book which is not in the collection
+    def test_add_book_in_favorites_doesnt_add_book_out_of_collection(self, collector):
+
+        collector.add_book_in_favorites('Jonathan Livingston Seagull')
+
+        assert 'Jonathan Livingston Seagull' not in collector.favorites
