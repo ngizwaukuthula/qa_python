@@ -22,3 +22,10 @@ class TestBooksCollector:
 
     # напиши свои тесты ниже
     # чтобы тесты были независимыми в каждом из них создавай отдельный экземпляр класса BooksCollector()
+
+# Test the set_book_ratings() actually sets rating between 1 and 10 for existing book
+    def test_set_book_rating_set_rating_5_for_existing_book(self, collector):
+        collector.add_new_book('The elegant universe')
+        collector.set_book_rating('The elegant universe', 5)
+
+        assert collector.books_rating['The elegant universe'] == 5
