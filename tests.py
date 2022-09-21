@@ -82,3 +82,16 @@ class TestBooksCollector:
         collector.set_book_rating('Promises to Keep', 4)
 
         assert collector.get_book_rating('Promises to Keep') == 4
+
+    # Test that get_books_rating returns all elements
+    def test_get_books_rating_returns_all_rating_values(self, collector):
+        collector.add_new_book('A little life')
+        collector.set_book_rating('A little life', 1)
+
+        collector.add_new_book('Scrum: The Art of Doing Twice the Work in Half the Time')
+        collector.set_book_rating('Scrum: The Art of Doing Twice the Work in Half the Time', 2)
+
+        collector.add_new_book('Permanent Record')
+        collector.set_book_rating('Permanent Record', 3)
+
+        assert len(collector.get_books_rating()) == 3
