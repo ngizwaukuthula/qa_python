@@ -36,3 +36,10 @@ class TestBooksCollector:
         collector.set_book_rating('The elegant universe', 11)
 
         assert collector.books_rating['The elegant universe'] == 1
+
+    # Test the set_book_ratings() does not set rating below 1 for existing book
+    def test_set_book_rating_doesnt_set_rating_0_for_existing_book(self, collector):
+        collector.add_new_book('The elegant universe')
+        collector.set_book_rating('The elegant universe', 0)
+
+        assert collector.books_rating['The elegant universe'] == 1
