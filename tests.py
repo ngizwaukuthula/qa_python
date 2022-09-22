@@ -102,3 +102,12 @@ class TestBooksCollector:
         collector.add_book_in_favorites('Jonathan Livingston Seagull')
 
         assert 'Jonathan Livingston Seagull' not in collector.favorites
+
+    # Test that delete_book_from_favorites() actually deletes existing book
+    def test_delete_book_from_favorites_delete_existing_book(self, collector):
+
+        collector.add_book_in_favorites('An Astronaut\'s Guide to Life on Earth')
+        collector.add_book_in_favorites('An Astronaut\'s Guide to Life on Earth')
+        collector.delete_book_from_favorites('An Astronaut\'s Guide to Life on Earth')
+
+        assert 'An Astronaut\'s Guide to Life on Earth' not in collector.favorites
