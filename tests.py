@@ -111,3 +111,16 @@ class TestBooksCollector:
         collector.delete_book_from_favorites('An Astronaut\'s Guide to Life on Earth')
 
         assert 'An Astronaut\'s Guide to Life on Earth' not in collector.favorites
+
+    # Test that get_list_of_favorites_books returns full list of added books
+    def test_get_list_of_favorites_books_return_all_added_to_favorites(self, collector):
+        collector.add_new_book('A little life')
+        collector.add_book_in_favorites('A little life')
+
+        collector.add_new_book('Scrum: The Art of Doing Twice the Work in Half the Time')
+        collector.add_book_in_favorites('Scrum: The Art of Doing Twice the Work in Half the Time')
+
+        collector.add_new_book('Permanent Record')
+        collector.add_book_in_favorites('Permanent Record')
+
+        assert len(collector.favorites) == 3
